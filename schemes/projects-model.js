@@ -1,14 +1,5 @@
 const db = require('../data/dbConfig.js');
 
-module.exports = {
-    find,
-    findResource,
-    findTasks,
-    add,
-    addResource,
-    addTasks
-};
-
 function find() {
     return db('projects')
 }
@@ -32,3 +23,12 @@ function addResource(resourceData) {
 function addTasks(taskData) {
     return db('tasks').insert(taskData);
 }
+
+module.exports = {
+    find,
+    findResource,
+    findTasks,
+    add,
+    addResource,
+    addTasks
+};
