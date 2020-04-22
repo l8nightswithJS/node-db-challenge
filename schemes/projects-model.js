@@ -8,8 +8,12 @@ function findResource() {
     return db('resource')
 }
 
-function findTasks() {
-    return db('tasks')
+function findTasks(id) {
+    return db('projects')
+    .select('projects.project_name','tasks.task_notes','tasks.task_description', 'tasks.task_completed')
+    .join('tasks', 'tasks.project_id', 'projects.id')
+    .where({project_id: id})
+    .orderBy('tasks.id')
 }
 
 function add(projectData) {
@@ -21,7 +25,9 @@ function addResource(resourceData) {
 }
 
 function addTasks(taskData) {
-    return db('tasks').insert(taskData);
+    return db('tasks')
+    .insert(taskData)
+    
 }
 
 module.exports = {

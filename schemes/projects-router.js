@@ -21,18 +21,25 @@ router.get('/resource', (req, res) => {
     .catch(err => res.status(500).json({message: 'failed to retrieve'}));
 });
 
-router.get('/tasks', (req, res) => {
-    Projects.findTasks()
-    .then(tasks=> {
-        res.json(tasks);
+router.get('/:id/tasks', (req, res) => {
+    const { id } = req.params;
+
+    Projects.findTasks(id)
+    .then(tasks => {
+        if (tasks.length) {
+            res.status(201).json(tasks);
+        } else {
+            res.status(404).json({ message: 'Could not find tasks for given project' })
+        }
     })
     .catch(err => res.status(500).json({message: 'failed to retrieve'}));
 });
 
 router.post('/', (req, res) => {
-    project = req.body;
+    const project = req.body;
+    const { id } = req.query;
 
-    Projects.add(project)
+    Projects.add(id, project)
     .then(newProject => {
         res.status(201).json(newProject)
     })
