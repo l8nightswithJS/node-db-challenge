@@ -40,11 +40,20 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+  Relational databases are more structured and store simple information like phone numbers and names,
+  where as SQL can hold folder and data in one table.
+
 - [ ] Why do tables need a `primary key`?
+
+    to prevent errors, and so duplicates are not created also for linking or joining tables
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+    foreign key column
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+  an airtable that links both tables.
+
 
 ## Minimum Viable Product
 
